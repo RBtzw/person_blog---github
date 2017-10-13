@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{% static 'css/semantic.css' %}" rel="stylesheet">
+        <link rel="stylesheet" type="" href="{% static 'css/cousom.css' %}">
+    </head>
+    <body style="background-color:#e5e5e5">
+    <div class="ui fixed inverted menu">
+        <a href="{% url 'first' %}" class="item">首页</a>
+        <a href="{% url 'index' %}" class="item">个人的分享</a>
+        <a href="" class="item">音乐最安全</a>
+
+        <div class="right menu">
+        <a href="https://github.com/RBtzw" class="item">github</a>
+        <a href="https://www.zhihu.com/people/li-han-sheng-99/activities" class="item">知乎</a>
+        <a href="tencent://message/?uin=309096436&Site=400301.com&Menu=yes" class="item">QQ</a>
+        </div>
+    </div>
+
+    <div class="ui basic segment index">
+         <div class="ui grid">
+            <div class="ui three wide column">
+
+            </div>
+            <div class="ui ten wide column blog">
+
+            <div class="ui container nav" style="width:200px">
+                <div class="ui borderless text two item menu" ">
+                    <a class="item" href="?tag=网站开发">
+                        网站开发
+                    </a>
+                    <a class="item" href="?tag=随笔、行记">
+                        随笔、行记
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="ui divider"></div>
+
+
+            {% for article in article_list %}
+                <div class="ui basic segment">
+                    <div class="ui grid">
+
+                        <div class="ui five wide column pic">
+                            <img class="ui Medium image" src="{{ article.hand_img }}" alt="">
+                        </div>
+                        <div class="ui eleven wide column">
+                             <div class="ui container vertical segment">
+                                     <a href="{% url 'detail' article.id %}">
+                                        <h1 class="ui header">
+                                            {{ article.handline }}
+                                        </h1>
+                                    </a>
+                                     <p>
+                                        {{ article.content|truncatechars_html:400 }}
+                                        <a href="{% url 'detail' article.id %}">
+                                            阅读全文
+                                        </a>
+                                     </p>
+
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+
+
+            </div>
+
+            </div>
+            <div class="ui three wide column">
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    </body>
+</html>

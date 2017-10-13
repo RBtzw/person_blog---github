@@ -1,0 +1,41 @@
+
+
+
+.ui.vertical.basic.segment.yetou{
+    height: 700px;
+    background:url('../images./yetou.jpg');
+    background-size:100% 100%;
+    background-repeat: no-repeat;
+
+}
+
+.ui.fixed.inverted.menu{
+    padding: 0px 300px 0px 300px;
+}
+
+
+.ui.six.wide.column{
+    top: 413px;
+}
+
+.ui.segment.jieshao{
+    height: 260px;
+    background-color: rgba(255, 255, 255,0.8)
+}
+
+.ui.ten.wide.column.zhengwen{
+    top: 200px;
+}
+
+.ui.center.aligned.basic.segment.zhengwen{
+    padding: 60px 60px 0px 0px
+}
+
+.ui.basic.segment.boketou{
+    width: 1903px;
+    padding: 0px 0px 0px 0px;
+}
+
+.ui.ten.wide.column.blog{
+    padding: 100px 100px 5px 5px
+}

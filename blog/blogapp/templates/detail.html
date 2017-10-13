@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{% static 'css/semantic.css' %}" rel="stylesheet">
+        <link rel="stylesheet" type="" href="{% static 'css/cousom.css' %}">
+    </head>
+    <body style="background-color:#e5e5e5">
+    <div class="ui fixed inverted menu">
+        <a href="{% url 'first' %}" class="item">首页</a>
+        <a href="{% url 'index' %}" class="item">个人的分享</a>
+        <a href="" class="item">音乐最安全</a>
+
+        <div class="right menu">
+        <a href="https://github.com/RBtzw" class="item">github</a>
+        <a href="https://www.zhihu.com/people/li-han-sheng-99/activities" class="item">知乎</a>
+        <a href="tencent://message/?uin=309096436&Site=400301.com&Menu=yes" class="item">QQ</a>
+        </div>
+    </div>
+
+    <div class="ui grid">
+        <div class="four wide column">
+            
+        </div>
+        
+        <div class="ten wide column">
+
+
+
+            <div class="ui basic segment" style="width:900px">
+            <div class="ui segment">
+                <h1 class="ui header">
+                    {{ article.handline }}
+                </h1>
+                <p>
+                    {{ article.content }}
+                </p>
+            </div>
+            </div>
+        </div>>
+            <!--下面是评论表单的代码-->
+              <div class="ui segment container" style="width:700px;border:none;box-shadow:none">
+            <h3 class="ui horizontal  divider header" style="">评论</h3>
+            <div class="ui comments" style="border:none">
+                <!---->
+            {% for comment in article.under_comments.all %}
+                    <div class="comment">
+                        <div class="content">
+                            <a href="#" class="author">{{ comment.name }}</a>
+                            <div class="metadata">
+                                <div class="date">
+                                    {{ comment.createtime }}
+                                </div>
+
+
+                            </div>
+                            <p class="text" >
+                                {{ comment.comment }}
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+            <div class="ui divider"></div>
+            <form class="ui error tiny form"  method="post">
+                <!--  如果对表单进行手动渲染，使用以下代码
+                {% if form.errors %}
+                    <div class="ui error message">
+                        {{ form.errors }}
+                    </div>
+                    {% for field in form %}
+                        <div class="{{ field.errors|yesno:'error, '}} field">
+                            {{ field.label }}
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    {% for field in form %}
+                    <div class="field">
+                        {{ field.lable }}
+                        {{ field }}
+                    </div>
+                    {% endfor %}
+
+                {% endif %}-->
+                {{ form.as_p }}
+                {% csrf_token %}
+                <button type="submit" class="ui red button" >提交</button>
+            </form>
+
+        </div>
+    </body>
+</html>
